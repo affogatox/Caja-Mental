@@ -1,0 +1,20 @@
+<body>
+
+<h1>Notas guardadas</h1>
+
+<div id="lista-notas"></div>
+
+<script>
+    const lista = document.getElementById("lista-notas");
+
+    const historial = JSON.parse(localStorage.getItem("notas_historial")) || [];
+
+    historial.forEach(nota => {
+        const div = document.createElement("div");
+        div.className = "nota";
+        div.textContent = nota;
+        lista.appendChild(div);
+    });
+</script>
+
+</body>

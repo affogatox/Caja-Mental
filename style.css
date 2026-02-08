@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+/* CONTENEDOR DEL TEXTAREA + BOTÓN */
+.contenedor-input {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 20px; /* separa el input de las notas */
+}
+
+/* TEXTAREA AJUSTADO PARA QUE NO MUEVA EL BOTÓN */
+.contenedor-input textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px 60px 10px 10px;
+    font-size: 16px;
+    resize: none;
+    box-sizing: border-box;
+    overflow-y: auto;
+    line-height: 20px;
+    display: block;
+}
+
+/* BOTÓN DE ENVIAR ESTILO WHATSAPP */
+.btn-enviar {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: #25D366;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.btn-enviar:hover {
+    background-color: #1ebe5d;
+}
+
+/* LISTA DE NOTAS */
+#lista-notas {
+    margin-top: 10px;
+    text-align: left;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* TARJETAS DE NOTAS */
+.nota {
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn-borrar {
+    background: transparent;
+    border: none;
+    color: #ff4d4d;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.btn-borrar:hover {
+    color: #d93636;
+}
+.btn-editar {
+    background: transparent;
+    border: none;
+    color: #4a90e2;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.btn-editar:hover {
+    color: #1c6cd5;
+}
+.acciones-nota {
+    display: flex;
+    gap: 8px; /* espacio entre iconos */
+}
+.editor-nota {
+    width: 100%;
+    min-height: 40px;
+    font-size: 16px;
+    padding: 5px;
+    box-sizing: border-box;
+    resize: none;
+}
+/* Ocultar iconos por defecto */
+.acciones-nota {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Mostrar iconos cuando el mouse está sobre la nota */
+.nota:hover .acciones-nota {
+    opacity: 1;
+}
+.btn-nueva-ventana {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.btn-nueva-ventana:hover {
+    background-color: #0069d9;
+}
+.btn-nueva-ventana {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.btn-nueva-ventana:hover {
+    background-color: #0069d9;
+}
