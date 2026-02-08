@@ -5,11 +5,26 @@ const listaNotas = document.getElementById("lista-notas");
 // Cargar SOLO las notas del index
 let notas = JSON.parse(localStorage.getItem("notas_index")) || [];
 
-// Botón nueva ventana
+// Botón Caja
 document.getElementById("nueva-ventana").addEventListener("click", () => {
+
+    // 1. Tomar la última nota guardada en el index
+    const ultimaNota = notas[notas.length - 1];
+
+    if (ultimaNota) {
+        // 2. Guardarla en el historial
+        const historial = JSON.parse(localStorage.getItem("notas_historial")) || [];
+        historial.push(ultimaNota);
+        localStorage.setItem("notas_historial", JSON.stringify(historial));
+    }
+
+    // 3. Borrar TODAS las notas del index
+    notas = [];
+    localStorage.setItem("notas_index", JSON.stringify(notas));
+
+    // 4. Redirigir al historial
     window.location.href = "notas.html";
 });
-
 // Guardar con botón
 boton.addEventListener("click", () => {
     guardarNota();
@@ -28,14 +43,9 @@ function guardarNota() {
 
     if (texto !== "") {
 
-        // 1. Guardar en notas_index (solo para index.html)
+        // Guardar solo en notas_index
         notas.push(texto);
         localStorage.setItem("notas_index", JSON.stringify(notas));
-
-        // 2. Guardar también en notas_historial (para notas.html)
-        const historial = JSON.parse(localStorage.getItem("notas_historial")) || [];
-        historial.push(texto);
-        localStorage.setItem("notas_historial", JSON.stringify(historial));
 
         entrada.value = "";
         mostrarNotas();
@@ -105,3 +115,7 @@ function mostrarNotas() {
         listaNotas.appendChild(div);
     });
 }
+document.getElementById("ir-historial").addEventListener("click", () => {
+    window.location.href = "notas.html";
+});
+mostrarNotas();

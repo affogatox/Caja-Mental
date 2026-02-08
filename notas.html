@@ -1,20 +1,64 @@
-<body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Notas guardadas</title>
 
-<h1>Notas guardadas</h1>
+    <!-- Fuente Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<div id="lista-notas"></div>
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
 
+<body class="dark-mode">
+
+    <h1 class="titulo">
+        Notas guardadas
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2h5ZGh1eXZncmptbGV0YzB5NDlmcjFybHNvcHJmdmIxNTB2cmVpcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1yMPysZFNUHBMNQR4V/giphy.gif" 
+             alt="gif" 
+             class="gif-titulo">
+    </h1>
+
+    <!-- Botón Home -->
+    <button id="volver-home">Home</button>
+
+    <!-- Lista de notas -->
+<div id="lista-historial"></div>
+
+    <!-- Script exclusivo para notas.html -->
 <script>
-    const lista = document.getElementById("lista-notas");
+    // Botón Home
+    document.getElementById("volver-home").addEventListener("click", () => {
+        window.location.href = "index.html";
+    });
 
+    // Mostrar SOLO el historial
+    const lista = document.getElementById("lista-historial");
     const historial = JSON.parse(localStorage.getItem("notas_historial")) || [];
 
-    historial.forEach(nota => {
+    historial.forEach((nota, index) => {
         const div = document.createElement("div");
         div.className = "nota";
-        div.textContent = nota;
+
+        const texto = document.createElement("span");
+        texto.textContent = nota;
+
+        const btnBorrar = document.createElement("button");
+        btnBorrar.textContent = "✖";
+        btnBorrar.className = "btn-borrar-nota";
+
+        btnBorrar.addEventListener("click", () => {
+            historial.splice(index, 1);
+            localStorage.setItem("notas_historial", JSON.stringify(historial));
+            div.remove();
+        });
+
+        div.appendChild(texto);
+        div.appendChild(btnBorrar);
         lista.appendChild(div);
     });
 </script>
 
 </body>
+</html>
